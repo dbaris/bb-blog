@@ -6,7 +6,10 @@ Added Features:
 * Delete Posts
 * Time Stamp
 * Increased authentication security
+* A chic redesign
 
 In Progress/TBD:
 * Editing Posts
-* Multiple Users
+* Editable Bio
+* Check with user before deleting
+* Multiple Users (will need to add db)

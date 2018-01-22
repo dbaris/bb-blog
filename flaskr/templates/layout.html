@@ -1,5 +1,5 @@
 <!doctype html>
-<title>Flaskr</title>
+<title>bb blog</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono" rel="stylesheet">
 <div class=page>
@@ -14,5 +14,8 @@
   {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
   {% endfor %}
+  <div class="bio">
+  	<p>Welcome to my blog!</p>
+  </div>
   {% block body %}{% endblock %}
 </div>

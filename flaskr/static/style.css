@@ -1,14 +1,14 @@
 body            { font-family: 'Oxygen Mono', monospace; background: #9db4c6; }
-a, h1, h2       { color: #276636; }
+a, h1, h2       { color: #365770; }
 h1, h2          { font-family: 'Oxygen Mono', monospace; margin: 0; }
 h1              { border-bottom: 2px solid #336084; }
 h2              { font-size: 1.2em; }
 
-.page           { margin: 2em auto; width: 60vw; border: 5px solid #336084;
+.page           { margin: 2em auto; width: 60vw; border: 5px solid #c6ced3;
                   padding: 0.8em; background: white; }
 .entries        { list-style: none; margin: 0; padding: 2vh; }
 .entries li     { margin: 0.8em 1.2em; }
-.add-entry      { font-size: 0.9em; border-bottom: 1px solid #336084; }
+.add-entry      { font-size: 0.9em; border-bottom: 3px solid #336084; }
 .add-entry dl   { font-weight: bold; }
 .metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
                   margin-bottom: 1em; background: #fafafa; }
@@ -38,3 +38,4 @@ h2              { font-size: 1.2em; }
 				  display: inline-block;
 				  vertical-align: top;
 				  text-align: right}
+.bio			{ margin: 2em}
