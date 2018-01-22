@@ -11,7 +11,6 @@ app.config.from_object(__name__)
 
 salt=os.environ["FLASK_SALT"]
 user=os.environ["FLASK_USER"]
-# pwd=os.environ["FLASK_PASS"]
 pwd=hashlib.sha256(salt+os.environ["FLASK_PASS"]).hexdigest()
 
 app.config.update(dict(
@@ -52,7 +51,7 @@ def initdb_command():
 	init_db()
 	print('Initialized database.')
 
-@app.route('/')
+@app.route('/', methods=["GET"])
 def show_entries():
 	db=get_db()
 	cur=db.execute('select title, text, postDate from entries order by id desc')
@@ -97,8 +96,16 @@ def logout():
 	flash('You were logged out')
 	return redirect(url_for('show_entries'))
 
-@app.route('/edit')
+@app.route('/refresh')
+def refresh():
+	return redirect(url_for('show_entries'))
+
+@app.route('/edit', methods=["POST"])
 def edit():
+	if not session.get('logged_in'):
+		abort(401)
+
+
 	flash("edit!")
 	return redirect(url_for('show_entries'))
 

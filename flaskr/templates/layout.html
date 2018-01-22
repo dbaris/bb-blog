@@ -3,7 +3,7 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono" rel="stylesheet">
 <div class=page>
-  <h1>bb blog</h1>
+  <h1><a class="no-underline" href="{{ url_for('refresh') }}">bb blog</a></h1>
   <div class=metanav>
   {% if not session.logged_in %}
     <a href="{{ url_for('login') }}">log in</a>

@@ -10,21 +10,22 @@
         <dd><input type=submit value=Share>
       </dl>
     </form>
-    <h2 class="prev-title">Previous Entries:</h2>
+    <h2 class="prev-title">previous entries:</h2>
   {% endif %}
 
   <ul class=entries>
   {% for entry in entries %}
     <li>
-      <div>
+      <div class="entry-block">
         <h2 class="title">{{ entry.title }}</h2>
         <div class="date">{{ entry.postDate|safe }} </div>
         <div class="text">{{ entry.text|safe }}</div>
       </div>
 
+      
     {% if session.logged_in %}
-      <div class="menu-bar">
-        <form class="edit-bar" action="{{ url_for('edit') }}" method=post >
+      <div class="edit-block">
+        <form class="edit-bar" action="{{ url_for('edit') }}" method=post>
           <dd><input class="edit" type=submit value=Edit>
         </form>
         <form class="edit-bar" action="{{ url_for('delete', entry=entry.title) }}" method=post>
@@ -32,6 +33,7 @@
         </form>
       </div>
     {% endif %}
+      <div class="menu-bar"></div>
 
   {% else %}
     <li><em>No entries yet!</em>

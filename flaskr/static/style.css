@@ -1,26 +1,26 @@
-body            { font-family: 'Oxygen Mono', monospace; background: #95BF74; }
-a, h1, h2       { color: #465C69; }
+body            { font-family: 'Oxygen Mono', monospace; background: #9db4c6; }
+a, h1, h2       { color: #276636; }
 h1, h2          { font-family: 'Oxygen Mono', monospace; margin: 0; }
-h1              { border-bottom: 2px solid #397367; }
+h1              { border-bottom: 2px solid #336084; }
 h2              { font-size: 1.2em; }
 
-.page           { margin: 2em auto; width: 60vw; border: 5px solid #397367;
+.page           { margin: 2em auto; width: 60vw; border: 5px solid #336084;
                   padding: 0.8em; background: white; }
-.entries        { list-style: none; margin: 0; padding: 0; }
+.entries        { list-style: none; margin: 0; padding: 2vh; }
 .entries li     { margin: 0.8em 1.2em; }
-.add-entry      { font-size: 0.9em; border-bottom: 1px solid #ccc; }
+.add-entry      { font-size: 0.9em; border-bottom: 1px solid #336084; }
 .add-entry dl   { font-weight: bold; }
 .metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
                   margin-bottom: 1em; background: #fafafa; }
-.flash          { background: #cee5F5; padding: 0.5em;
-                  border: 1px solid #aacbe2; }
+.flash          { background: #cdddc1; padding: 0.5em;
+                  border: 1px solid #abbc9c; }
 .error          { background: #f0d6d6; padding: 0.5em; }
 .edit			{ color:  #ffffff; border: none; font-size: 0.8em; background: #892a14; }
 .edit-bar 		{ display: inline-block; }
-.title 			{ color: #397367; }
-.menu-bar		{ border-bottom: 1px solid #95BF74; 
-	  			  padding-top: 5vh; 
-	  			  margin-top: 5vh;
+.title 			{ color: 336084; }
+.menu-bar		{ border-bottom: 1px solid #336084; 
+	  			  padding-top: 2vh; 
+	  			  margin-top: 2vh;
 	  			  padding-bottom: 5vh;
 	  			  margin-bottom: 5vh;
 	  			  display: block; }
@@ -30,3 +30,11 @@ h2              { font-size: 1.2em; }
 				  padding-bottom: 2vh}
 .prev-title		{ text-align: center; 
 				  padding-top: 3vh;}
+.no-underline 	{ text-decoration: none;}
+.entry-block 	{ width: 70%;
+				  display: inline-block;
+				  vertical-align: top}
+.edit-block		{ width: 20%;
+				  display: inline-block;
+				  vertical-align: top;
+				  text-align: right}
