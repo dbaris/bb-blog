@@ -6,7 +6,7 @@ Added Features:
 * User can update or delete posts
 * Time stamp (shows most recent update to post)
 * Increased authentication security
-* A ~stylin~ redesign
+* A stylin redesign
 
 In Progress/TBD:
 * Editable Bio
