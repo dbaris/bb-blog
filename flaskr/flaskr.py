@@ -53,10 +53,12 @@ def initdb_command():
 
 @app.route('/', methods=["GET"])
 def show_entries():
+	if not hasattr(session, "bio"):
+		session['bio']="Welcome to my blog! I'm a cs student and i love sitting alone in this classroom in silence wowie!"
 	db=get_db()
-	cur=db.execute('select title, text, postDate from entries order by id desc')
+	cur=db.execute('select title, text, postDate, id from entries order by id desc')
 	entries=cur.fetchall()
-	return render_template('show_entries.html', entries=entries)
+	return render_template('show_entries.html', entries=entries, bio=session['bio'])
 
 @app.route('/add', methods=['POST'])
 def add_entry():
@@ -66,7 +68,6 @@ def add_entry():
 	title=re.sub("[<>=]", "", request.form["title"])
 	text=re.sub("[<>=]", "", request.form["text"])
 	date=str(datetime.datetime.now().year)+"-"+str(datetime.datetime.now().month)+"-"+str(datetime.datetime.now().day)
-	flash(date)
 	db.execute('insert into entries (title, text, postDate) values (?, ?, ?)',
 				 [title, text, date])
 	db.commit()
@@ -85,7 +86,8 @@ def login():
 			error='Invalid credentials'
 		else:
 			session['logged_in'] = True
-			flash('You were logged in')
+			session['user'] = login_user
+			flash('Welcome back ' + session['user'] + "!")
 			return redirect(url_for('show_entries'))
 	return render_template("login.html", error=error)
 
@@ -102,12 +104,19 @@ def refresh():
 
 @app.route('/edit', methods=["POST"])
 def edit():
+	error = None
 	if not session.get('logged_in'):
 		abort(401)
 
+	return render_template("edit-post.html", error=error, title=request.form["title"], text=request.form["text"], date=request.form["date"], id=request.form["id"])
 
-	flash("edit!")
-	return redirect(url_for('show_entries'))
+@app.route('/edit_bio', methods=["POST"])
+def edit_bio():
+	error = None
+	if not session.get('logged_in'):
+		abort(401)
+
+	return render_template("edit-bio.html", error=error, bio=session["bio"])
 
 @app.route('/delete', methods=['POST'])
 def delete():
@@ -119,6 +128,28 @@ def delete():
 	db.commit()
 	flash("Entry deleted.")
 	return redirect(url_for('show_entries'))
+
+@app.route('/update-bio', methods=['POST'])
+def update_bio():
+	# stub
+	session['bio'] = re.sub("[<>=]", "", request.form["bio-text"])
+	return redirect(url_for('show_entries'))
+
+@app.route('/update-post', methods=['POST'])
+def update_post():
+	if not session.get('logged_in'):
+		abort(401)
+
+	db=get_db()
+	title=re.sub("[<>=]", "", request.form["title"])
+	text=re.sub("[<>=]", "", request.form["text"])
+	date=str(datetime.datetime.now().year)+"-"+str(datetime.datetime.now().month)+"-"+str(datetime.datetime.now().day)
+	post_id=re.sub("[<>=]", "", request.form["id"])
+	db.execute('update entries set title=?, text=?, postDate=? where id=?', [title, text, date, post_id])
+	db.commit()
+	flash("Entry was successfully updated.")
+	return redirect(url_for('show_entries'))
+
 # an easter egg ;)
 
 @app.cli.command('hello')

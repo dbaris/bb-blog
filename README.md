@@ -1,4 +1,4 @@
-# bb-blog
+# bb blog
 
 This project is an extension of the flaskr microblog tutorial, available here: http://flask.pocoo.org/docs/0.12/tutorial/
 

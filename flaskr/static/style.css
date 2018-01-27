@@ -9,7 +9,7 @@ h2              { font-size: 1.2em; }
 .entries        { list-style: none; margin: 0; padding: 2vh; }
 .entries li     { margin: 0.8em 1.2em; }
 .add-entry      { font-size: 0.9em; border-bottom: 3px solid #336084; }
-.add-entry dl   { font-weight: bold; }
+.add-entry dl   { margin-left: 2em; font-weight: bold; }
 .metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
                   margin-bottom: 1em; background: #fafafa; }
 .flash          { background: #cdddc1; padding: 0.5em;
@@ -38,4 +38,13 @@ h2              { font-size: 1.2em; }
 				  display: inline-block;
 				  vertical-align: top;
 				  text-align: right}
-.bio			{ margin: 2em}
+.bio			{ font-size: 0.9em; border-bottom: 3px solid #336084;}
+.bio p 			{ margin: 2em; }
+.edit-bio		{ margin-bottom: 3vh;
+				  margin-top: 1vh;
+				  font-size: 1.2em; }
+.bio-section 	{ display: inline-block;}
+.bio-left		{ width: 70%; }
+.bio-right		{width: 25%;
+				  margin-left: 3%;}
+

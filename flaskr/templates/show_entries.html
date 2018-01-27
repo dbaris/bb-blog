@@ -1,7 +1,22 @@
 {% extends "layout.html" %}
 {% block body %}
+
+  <div class="bio">
+    <div class="bio-section bio-left">
+    <p>{{ bio }}</p>
+    </div>
+    {% if session.logged_in %}
+    <div class="bio-section bio-right">
+    <form class="edit-bio" action="{{ url_for('edit_bio') }}" method=post>
+      <dd><input class="edit" type=submit value="Edit Bio">
+    </form>
+    </div>
+    {% endif %}
+  </div>
+  
   {% if session.logged_in %}
-    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+    <h2 class="prev-title">add a post:</h2>
+    <form action="{{ url_for('add_entry') }}" method=post class="add-entry">
       <dl>
         <dt>Title:
         <dd><input type=text size=30 name=title>
@@ -26,6 +41,10 @@
     {% if session.logged_in %}
       <div class="edit-block">
         <form class="edit-bar" action="{{ url_for('edit') }}" method=post>
+          <input type="hidden" name="title" value="{{ entry.title }}">
+          <input type="hidden" name="date" value="{{ entry.postDate|safe }}">
+          <input type="hidden" name="text" value="{{ entry.text|safe }}">
+          <input type="hidden" name="id" value="{{ entry.id }}">
           <dd><input class="edit" type=submit value=Edit>
         </form>
         <form class="edit-bar" action="{{ url_for('delete', entry=entry.title) }}" method=post>
